@@ -15,13 +15,16 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "ngx-build-plus:browser",
+					"builder": "@angular-builders/custom-webpack:browser",
 					"options": {
 						"outputPath": "dist/shell",
 						"index": "src/index.html",
 						"polyfills": [
 							"zone.js"
 						],
+            "customWebpackConfig": {
+              "path": "webpack.config.ts"
+            },
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "less",
 						"assets": [
@@ -36,7 +39,6 @@
 						],
 						"scripts": [],
 						"main": "src/main.ts",
-						"extraWebpackConfig": "webpack.config.js",
 						"commonChunk": false
 					},
 					"configurations": {
@@ -53,8 +55,7 @@
 									"maximumError": "4kB"
 								}
 							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "webpack.prod.config.js"
+							"outputHashing": "all"
 						},
 						"development": {
 							"optimization": false,
@@ -65,11 +66,10 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "ngx-build-plus:dev-server",
+					"builder": "@angular-builders/custom-webpack:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "shell:build:production",
-							"extraWebpackConfig": "webpack.prod.config.js"
+							"buildTarget": "shell:build:production"
 						},
 						"development": {
 							"buildTarget": "shell:build:development"
@@ -79,7 +79,7 @@
 					"options": {
 						"port": 4200,
 						"publicHost": "http://localhost:4200",
-						"extraWebpackConfig": "webpack.config.js"
+            "proxyConfig": "proxy.config.js"
 					}
 				},
 				"extract-i18n": {
