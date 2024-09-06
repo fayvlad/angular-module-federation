@@ -1,18 +1,18 @@
-
-
 import { Routes } from '@angular/router';
 import {HomeComponent} from "../home/home.component";
-// @ts-ignore
-declare module 'mfe1/Module';
+import {loadRemoteModule} from "@angular-architects/native-federation";
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
+
+  // Add this route:
   {
-    path: 'flights',// @ts-ignore
-    loadChildren: () => import('mfe1/Module').then(m => m.FlightsModule)
+    path: 'flights',
+    loadComponent: () =>
+      loadRemoteModule('mfe1', './Component').then((m) => m.AppComponent),
   },
 ];
