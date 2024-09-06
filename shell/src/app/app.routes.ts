@@ -1,18 +1,36 @@
-
-
+import { loadRemoteModule } from '@angular-architects/native-federation';
 import { Routes } from '@angular/router';
-import {HomeComponent} from "../home/home.component";
-// @ts-ignore
-declare module 'mfe1/Module';
+import {
+  WebComponentWrapper, WebComponentWrapperOptions
+} from '@angular-architects/module-federation-tools';
+import { PageNotFound } from './page-not-found/page-not-found';
 
 export const routes: Routes = [
+
   {
-    path: '',
-    component: HomeComponent,
-    pathMatch: 'full'
+    path: 'load-angular-mfe1',
+    loadComponent: () =>
+      loadRemoteModule('mfe1', './Component').then((m) => m.AppComponent),
+  },
+
+  {
+    path: 'load-angular-mfe2',
+    loadComponent: () =>
+      loadRemoteModule('mfe2', './Component').then((m) => m.AppComponent),
   },
   {
-    path: 'flights',// @ts-ignore
-    loadChildren: () => import('mfe1/Module').then(m => m.FlightsModule)
+    path: 'load-react-mfe3',
+    component: WebComponentWrapper,
+    data: {
+      type: 'module',
+      remoteEntry: 'http://localhost:4303/assets/remoteEntry.js',
+      remoteName: 'mfe3',
+      exposedModule: './App',
+      elementName: 'react-element',
+    } as WebComponentWrapperOptions,
+  },
+  {
+    path: '**',
+    component: PageNotFound
   },
 ];
