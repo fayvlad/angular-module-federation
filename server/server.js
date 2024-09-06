@@ -10,8 +10,8 @@ const appMfe = express();
 const portHost = 4200; // host
 const portMfe = 4201;  //  mfe
 
-const mfeDirectory = path.join(__dirname, '../mfe1/dist/mfe1');
-const hostDirectory = path.join(__dirname, '../shell/dist/shell');
+const mfeDirectory = path.join(__dirname, '../mfe1/dist/mfe1/browser');
+const hostDirectory = path.join(__dirname, '../shell/dist/shell/browser');
 
 appHost.use(cors());
 

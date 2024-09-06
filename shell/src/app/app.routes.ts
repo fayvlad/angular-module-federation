@@ -4,7 +4,7 @@ import {loadRemoteModule} from "@angular-architects/native-federation";
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
     pathMatch: 'full',
   },
