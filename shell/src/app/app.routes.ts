@@ -23,7 +23,7 @@ export const routes: Routes = [
     component: WebComponentWrapper,
     data: {
       type: 'module',
-      remoteEntry: 'http://localhost:4303/assets/remoteEntry.js',
+      remoteEntry: 'http://localhost:4203/assets/remoteEntry.js',
       remoteName: 'mfe3',
       exposedModule: './App',
       elementName: 'react-element',

@@ -11,8 +11,8 @@ const appMfe3 = express();
 
 const portHost = 4200; // host
 const portMfe = 4201;  //  mfe
-const portMfe2 = 4202;  //  mfe
-const portMfe3 = 4303;  //  mfe
+const portMfe2 = 4202;  //  mfe2
+const portMfe3 = 4203;  //  mfe3
 
 const mfeDirectory = path.join(__dirname, '../mfe1/dist/mfe1/browser');
 const mfeDirectory2 = path.join(__dirname, '../mfe2/dist/mfe2/browser');
